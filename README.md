@@ -4,9 +4,8 @@
 ![example_1](/LJBannerViewDemo/ExampleImg/1.png)![example_2](/LJBannerViewDemo/ExampleImg/2.png)
 
 # Features
-* 显示的内容可高度自定义
-* 支持在Storyboard\xib中创建
-* 支持Autolayout
+* [x] 支持在Storyboard\xib中创建
+* [x] 支持Autolayout
 
 # Installation
 #### 1.Pod安装  
