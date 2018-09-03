@@ -20,6 +20,9 @@
 		653B60F321367C0A0020D891 /* XibCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 653B60F121367C0A0020D891 /* XibCreateViewController.xib */; };
 		653B60F621367E150020D891 /* MasonryCreateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 653B60F521367E150020D891 /* MasonryCreateVC.m */; };
 		653B60FA213686F50020D891 /* LJBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 653B60F9213686F50020D891 /* LJBannerView.m */; };
+		6574AA4D213D31FE00812AAA /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6574AA4A213D31FE00812AAA /* 1.png */; };
+		6574AA4E213D31FE00812AAA /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6574AA4B213D31FE00812AAA /* 2.png */; };
+		6574AA4F213D31FE00812AAA /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 6574AA4C213D31FE00812AAA /* 3.png */; };
 		9EFE605C3666593A3B746896 /* libPods-LJBannerViewDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DEC817DEA3193D797DD7641 /* libPods-LJBannerViewDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +70,9 @@
 		653B60F521367E150020D891 /* MasonryCreateVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasonryCreateVC.m; sourceTree = "<group>"; };
 		653B60F8213686F50020D891 /* LJBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJBannerView.h; sourceTree = "<group>"; };
 		653B60F9213686F50020D891 /* LJBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJBannerView.m; sourceTree = "<group>"; };
+		6574AA4A213D31FE00812AAA /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		6574AA4B213D31FE00812AAA /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		6574AA4C213D31FE00812AAA /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
 		C9CB8F8983F96E353298854F /* Pods-LJBannerViewDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJBannerViewDemo.debug.xcconfig"; path = "Target Support Files/Pods-LJBannerViewDemo/Pods-LJBannerViewDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		D37EB8AA5E33DC090EEDEBCB /* Pods-LJBannerViewDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJBannerViewDemo.release.xcconfig"; path = "Target Support Files/Pods-LJBannerViewDemo/Pods-LJBannerViewDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,6 +146,7 @@
 		653B60AC21366CAD0020D891 /* LJBannerViewDemo */ = {
 			isa = PBXGroup;
 			children = (
+				6574AA49213D31FE00812AAA /* ExampleImg */,
 				653B60E2213676A00020D891 /* DemoVC */,
 				653B60AD21366CAD0020D891 /* AppDelegate.h */,
 				653B60AE21366CAD0020D891 /* AppDelegate.m */,
@@ -193,6 +200,16 @@
 				653B60F9213686F50020D891 /* LJBannerView.m */,
 			);
 			path = LJBannerView;
+			sourceTree = "<group>";
+		};
+		6574AA49213D31FE00812AAA /* ExampleImg */ = {
+			isa = PBXGroup;
+			children = (
+				6574AA4A213D31FE00812AAA /* 1.png */,
+				6574AA4B213D31FE00812AAA /* 2.png */,
+				6574AA4C213D31FE00812AAA /* 3.png */,
+			);
+			path = ExampleImg;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,10 +316,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6574AA4E213D31FE00812AAA /* 2.png in Resources */,
 				653B60BA21366CAD0020D891 /* LaunchScreen.storyboard in Resources */,
 				653B60EE21367AD30020D891 /* MainViewController.xib in Resources */,
 				653B60F321367C0A0020D891 /* XibCreateViewController.xib in Resources */,
 				653B60B721366CAD0020D891 /* Assets.xcassets in Resources */,
+				6574AA4F213D31FE00812AAA /* 3.png in Resources */,
+				6574AA4D213D31FE00812AAA /* 1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
