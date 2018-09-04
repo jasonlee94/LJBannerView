@@ -30,6 +30,14 @@ static CGFloat const Animated_Secs = 4.0f; //轮播间隔时间
 
 #pragma mark -- Private Method
 
+- (void)btnClickAction:(UIButton *)sendBtn
+{
+    if(self.delegate && [self.delegate respondsToSelector:@selector(LJBannerViewDelegateClickForIndex:)])
+    {
+        [self.delegate LJBannerViewDelegateClickForIndex:sendBtn.tag];
+    }
+}
+
 - (void)initBaseView
 {
     _scrollView = [[UIScrollView alloc] init];
@@ -38,7 +46,7 @@ static CGFloat const Animated_Secs = 4.0f; //轮播间隔时间
     _scrollView.bounces = NO;
     _scrollView.pagingEnabled = YES;
     _scrollView.userInteractionEnabled = YES;
-    _scrollView.delaysContentTouches=YES;
+    _scrollView.delaysContentTouches = YES;
     _scrollView.delegate = self;
     
     _pageControl = [[UIPageControl alloc] init];
@@ -69,7 +77,15 @@ static CGFloat const Animated_Secs = 4.0f; //轮播间隔时间
                 _scrollView.contentSize = CGSizeMake(self.frame.size.width * _imgArr.count, self.frame.size.height);
                 UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
                 [imgView setImage:[UIImage imageNamed:_imgArr.firstObject]];
+                
+                UIButton *backgroundBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+                [backgroundBtn setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+                backgroundBtn.backgroundColor = [UIColor clearColor];
+                backgroundBtn.tag = 0;
+                [backgroundBtn addTarget:self action:@selector(btnClickAction:) forControlEvents:UIControlEventTouchUpInside];
+                
                 [_scrollView addSubview:imgView];
+                [_scrollView addSubview:backgroundBtn];
                 _pageControl.numberOfPages = _imgArr.count;
             }else{
                 
@@ -83,21 +99,30 @@ static CGFloat const Animated_Secs = 4.0f; //轮播间隔时间
                     
                     UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(i*self.frame.size.width, 0, self.frame.size.width, self.frame.size.height)];
                     
+                    UIButton *backgroundBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+                    [backgroundBtn setFrame:CGRectMake(i*self.frame.size.width, 0, self.frame.size.width, self.frame.size.height)];
+                    backgroundBtn.backgroundColor = [UIColor clearColor];
+                    [backgroundBtn addTarget:self action:@selector(btnClickAction:) forControlEvents:UIControlEventTouchUpInside];
+                    
                     if(i == 0)
                         //第一张图片
                     {
                         [imgView setImage:[UIImage imageNamed:_imgArr.lastObject]];
+                        backgroundBtn.tag = _imgArr.count - 1;
                         
                     }else if(i > 0 && i < _imgArr.count+1)
                         //中间区段图片
                     {
                         [imgView setImage:[UIImage imageNamed:_imgArr[i-1]]];
+                        backgroundBtn.tag = i-1;
                     }else if(i == _imgArr.count+1)
                         //最后一张图片
                     {
                         [imgView setImage:[UIImage imageNamed:_imgArr.firstObject]];
+                        backgroundBtn.tag = 0;
                     }
                     [_scrollView addSubview:imgView];
+                    [_scrollView addSubview:backgroundBtn];
                     
                 }
                 //图片放置完毕开启自动轮播
@@ -116,9 +141,17 @@ static CGFloat const Animated_Secs = 4.0f; //轮播间隔时间
             {
                 _scrollView.contentOffset = CGPointMake(0, 0);
                 _scrollView.contentSize = CGSizeMake(self.frame.size.width * _imgURLArr.count, self.frame.size.height);
+                
                 UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
                 [imgView sd_setImageWithURL:[NSURL URLWithString:_imgURLArr.firstObject]];
+                UIButton *backgroundBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+                [backgroundBtn setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+                backgroundBtn.backgroundColor = [UIColor clearColor];
+                backgroundBtn.tag = 0;
+                [backgroundBtn addTarget:self action:@selector(btnClickAction:) forControlEvents:UIControlEventTouchUpInside];
+                
                 [_scrollView addSubview:imgView];
+                [_scrollView addSubview:backgroundBtn];
                 _pageControl.numberOfPages = _imgURLArr.count;
             }else{
                 //图片多余一张
@@ -131,21 +164,29 @@ static CGFloat const Animated_Secs = 4.0f; //轮播间隔时间
                     
                     UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(i*self.frame.size.width, 0, self.frame.size.width, self.frame.size.height)];
                     
+                    UIButton *backgroundBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+                    [backgroundBtn setFrame:CGRectMake(i*self.frame.size.width, 0, self.frame.size.width, self.frame.size.height)];
+                    backgroundBtn.backgroundColor = [UIColor clearColor];
+                    [backgroundBtn addTarget:self action:@selector(btnClickAction:) forControlEvents:UIControlEventTouchUpInside];
+                    
                     if(i == 0)
                         //第一张图片
                     {
                         [imgView sd_setImageWithURL:[NSURL URLWithString:_imgURLArr.lastObject]];
-                        
+                        backgroundBtn.tag = _imgURLArr.count - 1;
                     }else if(i > 0 && i < _imgURLArr.count+1)
                         //中间区段图片
                     {
                         [imgView sd_setImageWithURL:[NSURL URLWithString:_imgURLArr[i-1]]];
+                        backgroundBtn.tag = i - 1;
                     }else if(i == _imgURLArr.count+1)
                         //最后一张图片
                     {
                         [imgView sd_setImageWithURL:[NSURL URLWithString:_imgURLArr.firstObject]];
+                        backgroundBtn.tag = 0;
                     }
                     [_scrollView addSubview:imgView];
+                    [_scrollView addSubview:backgroundBtn];
                 }
                 //图片放置完毕开启自动轮播
                 [self autoScrollTheImage];
@@ -170,6 +211,17 @@ static CGFloat const Animated_Secs = 4.0f; //轮播间隔时间
     [self setupImgView];
     
 }
+
+- (void)setPageIndicatorTintColor:(UIColor *)pageIndicatorTintColor
+{
+    _pageControl.pageIndicatorTintColor = pageIndicatorTintColor;
+}
+
+- (void)setCurrentPageIndicatorTintColor:(UIColor *)currentPageIndicatorTintColor
+{
+    _pageControl.currentPageIndicatorTintColor = currentPageIndicatorTintColor;
+}
+
 #pragma mark --自动轮播设置启动timer
 
 - (void)autoScrollTheImage
@@ -181,7 +233,6 @@ static CGFloat const Animated_Secs = 4.0f; //轮播间隔时间
         [[NSRunLoop currentRunLoop] addTimer:_autoTimer forMode:NSRunLoopCommonModes];
     }
 }
-
 
 #pragma mark --实现自动滚动方法
 
@@ -210,8 +261,6 @@ static CGFloat const Animated_Secs = 4.0f; //轮播间隔时间
             [_scrollView scrollRectToVisible:CGRectMake(_timerCount * self.frame.size.width, 0, self.frame.size.width, self.frame.size.height) animated:YES];
         }
     }
-    
-    
 }
 
 
