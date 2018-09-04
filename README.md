@@ -18,6 +18,7 @@
 #import "LJBannerView.h"
 ```
 # Usage
+### Create
 1. Create By Frame
   ```objectivec
     LJBannerView *bannerView = [[LJBannerView alloc] initWithFrame:CGRectMake(0, 90, [UIScreen mainScreen].bounds.size.width, 220.0f)];
@@ -56,6 +57,26 @@
 }
 @end
 ```
+### 属性
+1. 配置PageControl的颜色  
+```objectivec 
+@property (strong, nonatomic) UIColor *currentPageIndicatorTintColor;
+@property (strong, nonatomic) UIColor *pageIndicatorTintColor;
+```
+2. 设置本地图片  
+```objectivec 
+- (void)setLocalImageArr:(NSArray *)localImgArr;
+```
+3. 设置网络图片  
+```objectivec 
+- (void)setImageURLArr:(NSArray *)imgURLArr;
+```
+4. 代理获取点击下标
+```objectivec
+- (void)LJBannerViewDelegateClickForIndex:(NSInteger)index;
+```
+ 
+
   
  
  
