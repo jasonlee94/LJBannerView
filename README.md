@@ -57,7 +57,7 @@
 }
 @end
 ```
-### 属性
+### Property/Method
 1. 配置PageControl的颜色  
 ```objectivec 
 @property (strong, nonatomic) UIColor *currentPageIndicatorTintColor;
