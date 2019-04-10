@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "LJBannerView"
-  spec.version      = "1.0.1"
+  spec.version      = "1.0.2"
   spec.summary      = "LJBannerView is a simple tool"
 
   # This description is used to generate tags and improve search results.
