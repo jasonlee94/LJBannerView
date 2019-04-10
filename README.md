@@ -9,7 +9,7 @@
 
 # Installation
 #### 1.Pod安装  
-    pod 'LJBannerView', '~> 1.0.0'  
+    pod 'LJBannerView'  
   *此库已包含依赖库SDWebImage*
 #### 2.手动安装
 将项目文件中的LJBannerView .m/.h 拷贝到自己的项目中，并自行添加SDWebImage库  
